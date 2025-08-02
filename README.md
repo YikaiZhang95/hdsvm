@@ -22,7 +22,22 @@ Then the penalized SVM model is formulated as:
 where the ∘ symbol represents the Hadamard (element-wise) product.
 
 
-## 📦 Installation
+## Installation
 
 ```r
 install.packages("hdsvm")
+```
+
+## Usage
+```r
+library(hdsvm)
+set.seed(315)
+n <- 100
+p <- 400
+x1 <- matrix(rnorm(n / 2 * p, -0.25, 0.1), n / 2)
+x2 <- matrix(rnorm(n / 2 * p, 0.25, 0.1), n / 2)
+x <- rbind(x1, x2)
+beta <- 0.1 * rnorm(p)
+prob <- plogis(c(x %*% beta))
+y <- 2 * rbinom(n, 1, prob) - 1
+```
